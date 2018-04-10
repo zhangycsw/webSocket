@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>socket.io</title>
+</head>
+<body>
+  <h1>wonderful</h1>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socket = io();
+    socket.on('connect', function(){
+      console.log(socket.id);
+    });
+    setInterval(function(){
+      socket.send(Date.now());
+    }, 3000);
+    socket.on('message', function(data) {
+      console.log(data);
+    });
+    socket.on('error', function() {
+    	console.log('error');
+    });
+  </script>
+</body>
+</html>
